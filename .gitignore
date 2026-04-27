@@ -3,9 +3,10 @@
  # Ignore vendor bundle (if used)
 /vendor/bundle
 # Ignore log files
-/log/*
-!/log/.keep
-
+log/
+#DB
+/db/*.sqlite3
+/db/*.sqlite3-journal
 # Ignore temp files
 /tmp/*
 !/tmp/.keep
