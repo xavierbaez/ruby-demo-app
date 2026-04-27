@@ -4,8 +4,7 @@
 /vendor/bundle
 # Ignore log files
 log/
-db/
-#DB
+#Database
 /db/*.sqlite3
 # Ignore temp files
 /tmp/*
@@ -14,6 +13,8 @@ db/
 # Ignore storage (ActiveStorage)
 /storage/*
 !/storage/.keep
+vendor/
+/vendor/*
 
 # Ignore uploads
 /public/uploads
