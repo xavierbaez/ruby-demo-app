@@ -60,3 +60,54 @@ Thumbs.db
 /tmp/pids/*
 !/tmp/pids/.keep
 /tmp
+
+# Rails
+/public/assets
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+/yarn-debug.log
+/.yarn
+/public/webpack
+
+# Spring
+/tmp/spring
+/tmp/pids/server.pid
+
+# Bootsnap
+/tmp/bootsnap-*
+
+# Capybara
+/tmp/capybara
+
+# === Additional recommended ignores for Rails ===
+
+# Compiled assets and frontend packs
+/public/assets
+/public/packs
+/public/packs-test
+
+# Node modules and related (if you use JavaScript)
+/node_modules
+/yarn-error.log
+/yarn-debug.log*
+
+# Extra common temp and test files
+/tmp/spring
+/tmp/bootsnap-*
+/tmp/capybara
+/coverage
+
+# Spring server pid
+/tmp/pids/server.pid
+
+# Byebug
+.byebug_history
+
+# Extra environment files
+.env*.local
+
+# Editor swap files
+*.swp
+*.swo
