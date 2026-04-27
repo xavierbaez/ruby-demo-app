@@ -4,9 +4,9 @@
 /vendor/bundle
 # Ignore log files
 log/
+db/
 #DB
 /db/*.sqlite3
-/db/*.sqlite3-journal
 # Ignore temp files
 /tmp/*
 !/tmp/.keep
@@ -23,8 +23,8 @@ log/
 /config/credentials/*.key
 
 # Ignore database files
-/db/*.sqlite3
-/db/*.sqlite3-journal
+db/*.sqlite3
+db/*.sqlite3-journal
 
 # Ignore node modules (if added later)
 /node_modules
