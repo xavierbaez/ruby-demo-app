@@ -2,38 +2,35 @@ class DashboardController < ApplicationController
   def index
     metrics = Metric.where(service_name: "Apple Market Signal").order(:recorded_on)
 
-    # Base multipliers to simulate realistic subscriber counts per service
-    icloud_base    = 900_000_000
-    music_base     = 100_000_000
-    tvplus_base    = 45_000_000
-    arcade_base    = 20_000_000
-
-    # Normalize AAPL close prices to a 0-1 scale to drive subscriber fluctuation
     values = metrics.map { |m| m.value.to_f }
     min_val = values.min
     max_val = values.max
     range = max_val - min_val
-
-    normalized = metrics.map do |m|
-      [(m.value.to_f - min_val) / range]
-    end
-
     dates = metrics.map(&:recorded_on)
 
-    # Build multi-series line chart data
-    @subscriber_trend = {
-      "iCloud"        => dates.zip(normalized.map { |n| (icloud_base + n[0] * 50_000_000).round }).to_h,
-      "Apple Music"   => dates.zip(normalized.map { |n| (music_base + n[0] * 8_000_000).round }).to_h,
-      "Apple TV+"     => dates.zip(normalized.map { |n| (tvplus_base + n[0] * 5_000_000).round }).to_h,
-      "Apple Arcade"  => dates.zip(normalized.map { |n| (arcade_base + n[0] * 2_000_000).round }).to_h
-    }
+    # Each service normalized independently to its own realistic range
+    @icloud_trend = dates.zip(values.map { |v|
+      ((900 + ((v - min_val) / range) * 50).round(1))
+    }).to_h
+
+    @music_trend = dates.zip(values.map { |v|
+      ((100 + ((v - min_val) / range) * 8).round(1))
+    }).to_h
+
+    @tvplus_trend = dates.zip(values.map { |v|
+      ((45 + ((v - min_val) / range) * 5).round(1))
+    }).to_h
+
+    @arcade_trend = dates.zip(values.map { |v|
+      ((20 + ((v - min_val) / range) * 2).round(1))
+    }).to_h
 
     # Pie chart - current subscriber share
     @subscriber_share = {
-      "iCloud"       => 900_000_000,
-      "Apple Music"  => 100_000_000,
-      "Apple TV+"    => 45_000_000,
-      "Apple Arcade" => 20_000_000
+      "iCloud"       => 900,
+      "Apple Music"  => 100,
+      "Apple TV+"    => 45,
+      "Apple Arcade" => 20
     }
 
     # Bar chart - month over month growth %
