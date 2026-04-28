@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html data-bs-theme="dark">
 <head>
   <title><%= content_for(:title) || "Demo App" %></title>
 
@@ -21,6 +21,8 @@
 
   <!-- Chart libraries -->
   <%= javascript_include_tag "https://cdn.jsdelivr.net/npm/chart.js" %>
+  <%= javascript_include_tag "https://cdn.jsdelivr.net/npm/date-fns" %>
+  <%= javascript_include_tag "https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns" %>
   <%= javascript_include_tag "https://cdn.jsdelivr.net/npm/chartkick" %>
 </head>
 
