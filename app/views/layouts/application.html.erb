@@ -5,7 +5,7 @@
 
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="application-name" content="Demo App">
+  <meta name="application-name" content="Apple Services Dashboard">
   <meta name="mobile-web-app-capable" content="yes">
 
   <%= csrf_meta_tags %>
@@ -17,7 +17,7 @@
   <link rel="icon" href="/icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/icon.png">
 
-  <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
 
   <!-- Chart libraries -->
   <%= javascript_include_tag "https://cdn.jsdelivr.net/npm/chart.js" %>
