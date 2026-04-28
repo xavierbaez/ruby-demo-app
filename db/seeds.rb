@@ -7,3 +7,15 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+Metric.destroy_all
+
+[ "Apple TV", "App Store", "Apple Music" ].each do |service|
+  10.times do |i|
+    Metric.create!(
+      service_name: service,
+      metric_name: "quality_score",
+      value: rand(80..100),
+      recorded_on: Date.today - i.days
+    )
+  end
+end
