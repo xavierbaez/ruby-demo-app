@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_04_27_053111) do
+ActiveRecord::Schema[8.1].define(version: 2026_04_28_082908) do
   create_table "metrics", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "metric_name"
@@ -18,5 +18,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_04_27_053111) do
     t.string "service_name"
     t.datetime "updated_at", null: false
     t.decimal "value"
+    t.decimal "volume"
   end
 end
