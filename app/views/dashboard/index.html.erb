@@ -1,18 +1,20 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <div class="container py-5">
-  <div class="d-flex justify-content-between align-items-center">
-    <h1 class="display-5 fw-bold">Apple Services Evaluation Dashboard</h1>
-    <button class="btn btn-outline-secondary" data-controller="theme" data-action="click->theme#toggle">
-      Dark/Light Mode
-    </button>
-  </div>
+  <div class="p-5 mb-4 rounded-4 shadow-sm">
+    <div class="d-flex justify-content-between align-items-center">
+      <h1 class="display-5 fw-bold">Apple Services Evaluation Dashboard</h1>
+      <button class="btn btn-outline-secondary" data-controller="theme" data-action="click->theme#toggle">
+        Dark/Light Mode
+      </button>
+    </div>
     <p class="lead mt-3">
-      Performance metrics and trend analysis across Apple TV+, Music, Fitness+, Arcade, News+, and iCloud.
+      Performance metrics and trend analysis across Apple Music, Apple TV+, App Store, iCloud, and Apple Pay.
     </p>
+
     <div class="card rounded-4 shadow-sm mt-4">
       <div class="card-body">
-        <h5 class="mb-3">Service Quality Trend</h5>
+        <h5 class="mb-3">AAPL Daily Close Price</h5>
         <%= line_chart @chart_data,
                        height: "360px",
                        library: {
@@ -25,64 +27,30 @@
                        } %>
       </div>
     </div>
+
+    <div class="row g-3 mt-3">
+      <div class="col-md-4">
+        <div class="card rounded-4 shadow-sm text-center p-3">
+          <h6 class="text-muted">All-Time High</h6>
+          <h2 class="fw-bold text-success">$<%= @high %></h2>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card rounded-4 shadow-sm text-center p-3">
+          <h6 class="text-muted">All-Time Low</h6>
+          <h2 class="fw-bold text-danger">$<%= @low %></h2>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card rounded-4 shadow-sm text-center p-3">
+          <h6 class="text-muted">30-Day Average</h6>
+          <h2 class="fw-bold">$<%= @avg %></h2>
+        </div>
+      </div>
+    </div>
+
     <div class="mt-4">
       <span class="badge bg-dark me-2">Ruby 3.4.9</span>
       <span class="badge bg-dark me-2">Rails 8.1.3</span>
       <span class="badge bg-dark me-2">SQLite now / MySQL ready</span>
-      <span class="badge bg-dark me-2">Stimulus JS</span>
-      <span class="badge bg-dark">Chartkick</span>
-    </div>
-  </div>
-
-  <div class="row g-4">
-    <div class="col-md-4">
-      <div class="card rounded-4 shadow-sm mt-4">
-        <div class="card-body">
-          <h5 class="mb-3">Service Trend Signal</h5>
-          <%= line_chart @chart_data,
-                         height: "360px",
-                         xtitle: "Date",
-                         ytitle: "Trend Score",
-                         library: {
-                           backgroundColor: "transparent",
-                           legend: { labels: { color: "#f0f0f0" } },
-                           scales: {
-                             x: { ticks: { color: "#f0f0f0" }, grid: { color: "#333" } },
-                             y: { ticks: { color: "#f0f0f0" }, grid: { color: "#333" } }
-                           }
-                         } %>
-        </div>
-      </div>
-
-      <div class="card rounded-4 shadow-sm mt-4">
-        <div class="card-body">
-          <h5>Query Performance</h5>
-          <p>Latest service signal query: <strong><%= @query_time %> ms</strong></p>
-          <p class="text-muted">
-            Optimization suggestion: add a composite index on service_name and recorded_on for faster filtering and sorting.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-4">
-      <div class="card rounded-4 shadow-sm">
-        <div class="card-body">
-          <h5>Avg Query Time</h5>
-          <h2>128ms</h2>
-          <p class="text-muted">Highlights slow queries and optimization opportunities.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-4">
-      <div class="card rounded-4 shadow-sm">
-        <div class="card-body">
-          <h5>Optimization Status</h5>
-          <h2>3 Suggestions</h2>
-          <p class="text-muted">Indexing and query tuning recommendations.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+      <span class="badge bg-dark me-2">Stimulus JS
