@@ -4,7 +4,7 @@ namespace :alphavantage do
     require "net/http"
     require "json"
 
-    api_key = api_key = ENV["ALPHAVANTAGE_API_KEY"] || Rails.application.credentials.dig(:alphavantage, :api_key)
+    api_key = ENV["ALPHAVANTAGE_API_KEY"] || Rails.application.credentials.dig(:alphavantage, :api_key)
 
     if api_key.blank?
       puts "Missing AlphaVantage API key"
@@ -15,7 +15,6 @@ namespace :alphavantage do
 
     response = Net::HTTP.get(url)
     data = JSON.parse(response)
-
     time_series = data["Time Series (Daily)"]
 
     if time_series.blank?
@@ -31,6 +30,7 @@ namespace :alphavantage do
         service_name: "Apple Market Signal",
         metric_name: "daily_close",
         value: values["4. close"].to_f,
+        volume: values["5. volume"].to_f,
         recorded_on: Date.parse(date)
       )
     end
