@@ -8,7 +8,7 @@
     <div class="card rounded-4 shadow-sm mt-4">
       <div class="card-body">
         <h5 class="mb-3">Service Quality Trend</h5>
-        <%= line_chart @chart_data, height: "360px" %>
+
       </div>
     </div>
     </p>
@@ -23,11 +23,20 @@
 
   <div class="row g-4">
     <div class="col-md-4">
-      <div class="card rounded-4 shadow-sm">
+      <div class="card rounded-4 shadow-sm mt-4">
         <div class="card-body">
-          <h5>Service Quality Score</h5>
-          <h2>94.2%</h2>
-          <p class="text-muted">Demo metric for internal evaluation.</p>
+          <h5 class="mb-3">Service Trend Signal</h5>
+          <%= line_chart @chart_data, height: "360px", xtitle: "Date", ytitle: "Trend Score" %>
+        </div>
+      </div>
+
+      <div class="card rounded-4 shadow-sm mt-4">
+        <div class="card-body">
+          <h5>Query Performance</h5>
+          <p>Latest service signal query: <strong><%= @query_time %> ms</strong></p>
+          <p class="text-muted">
+            Optimization suggestion: add a composite index on service_name and recorded_on for faster filtering and sorting.
+          </p>
         </div>
       </div>
     </div>
